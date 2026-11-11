@@ -111,5 +111,112 @@ const ATENDIMENTOS = [
       "Peça que o cliente conecte um dispositivo para confirmar que a nova senha funcionou.",
       "Registre a senha nova em texto aberto na finalização do atendimento."
     ]
+  },
+  {
+    titulo: "Cliente ausente – Contato por atendimento aberto",
+    categoria: "Cliente ausente",
+    operador: "Carolini",
+    audio: "Cliente ausente/carol - cliente ausente.mp3",
+    abertura: {
+      relato: "Atendimento ativo: o contato com o cliente foi feito por conta do atendimento aberto. Relato: paguei a internet e está sem sinal.",
+      telefone: "(13) 9****-**31",
+      operador: "Carolini"
+    },
+    finalizacao: [
+      "Cliente com sinal, consumo e pagamento compensado.",
+      "Informa não estar no local no momento. Orientado a testar e, qualquer dúvida ou solicitação, retornar o contato."
+    ],
+    dicas: [
+      "Ao ligar por um atendimento aberto, apresente-se, confirme com quem fala e informe o protocolo e o motivo do contato.",
+      "Confira no sistema o sinal, o consumo e se o pagamento já foi compensado antes de falar o resultado.",
+      "Explique que após o pagamento a reativação pode levar um tempinho.",
+      "Se o cliente não está no local, peça que teste assim que chegar e deixe o canal de contato aberto."
+    ]
+  },
+  {
+    titulo: "Correção de cabos – Cabo na porta errada do roteador",
+    categoria: "Correção de cabos",
+    operador: "Jefferson",
+    audio: "Correção de cabos/jefferson - cabos7 - censurado.mp3",
+    abertura: {
+      relato: "Sem acesso. Contato: Rosana.",
+      telefone: "(11) 9****-**73",
+      operador: "Jefferson"
+    },
+    finalizacao: [
+      "Corrigido o cabo da LAN para a WAN, conexão normalizada."
+    ],
+    dicas: [
+      "Pergunte pelas luzes do roteador e do aparelho da fibra óptica antes de qualquer outro teste.",
+      "Confira no sistema o sinal da fibra para saber se o problema é interno ao local.",
+      "Peça ao cliente que confira os cabos e em qual entrada do roteador cada um está ligado.",
+      "Explique a regra: o cabo que vem do aparelho menor (ONU) fica sempre na porta WAN."
+    ]
+  },
+  {
+    titulo: "LOS – Patchcord dobrado atenuando o sinal",
+    categoria: "LOS",
+    operador: "Danilo",
+    audio: "LOS/danilo - LOS - censurado.mp3",
+    abertura: {
+      relato: "Cliente informa que sua esposa avisou que no local está sem acesso.",
+      telefone: "(13) 9****-**12 (titular)",
+      operador: "Danilo"
+    },
+    finalizacao: [
+      "Detalhes da O.S.: patchcord estava dobrado, atenuando o sinal.",
+      "Feita a manutenção. Conectado e navegando."
+    ],
+    dicas: [
+      "Avise o cliente que a ligação é gravada, por segurança, antes de iniciar a consulta.",
+      "Confira no sistema a causa da falta de acesso: aqui foi LOS, a perda de sinal de fibra.",
+      "Verifique se há rompimento na região; sem rompimento, trate como problema isolado e abra a O.S. para o técnico.",
+      "Informe o protocolo e o prazo da visita, e confirme o contato do cliente, mesmo que quem esteja no local seja outra pessoa."
+    ]
+  },
+  {
+    titulo: "Mudança de cômodo – Remanejamento de fibra e cabeamento",
+    categoria: "Mudança de cômodo",
+    operador: "Gu",
+    audio: "Mudança de comodo/gu - mudanca de com - censurado.mp3",
+    abertura: {
+      relato: "Atendimento aberto por outro operador. Cliente solicita mudança de cômodo e cabeamento.",
+      telefone: "(13) 9****-**18",
+      operador: "Sarah A. (abertura feita por outro operador)"
+    },
+    finalizacao: [
+      "Detalhes da O.S.: classificação do encerramento: remanejar fibra.",
+      "Serviço prestado: cliente solicitou o técnico para remanejar o aparelho de parede. Havia sobra de fibra na laje, utilizada até o novo local, sem precisar passar uma nova fibra. Aparelho fixado na parede do quarto e, após o serviço, cliente navegando com sucesso."
+    ],
+    dicas: [
+      "Se a ligação caiu, localize o atendimento anterior e retome de onde parou, sem fazer o cliente repetir tudo.",
+      "Explique as opções comerciais com clareza: plano atual com roteador próprio ou upgrade com ponto adicional em cortesia.",
+      "Informe o custo do cabeamento (R$ 3,00 por metro) e do remanejamento, e que o técnico avalia no local.",
+      "Antes de ofertar visita de avaliação, consulte o histórico de visitas anteriores.",
+      "Confirme data e horário do agendamento e a faixa de atendimento do técnico ao final."
+    ]
+  },
+  {
+    titulo: "Sem acesso ponto adicional – Cabo de rede solto",
+    categoria: "Sem acesso ponto adicional",
+    operador: "Eduardo Silva",
+    audio: "Sem acesso ponto adicional/eduardo - sem acesso pont ad - censurado.mp3",
+    abertura: {
+      relato: "Atendimento transferido por uma operadora do comercial para o suporte. Sem acesso.",
+      telefone: "(11) 9****-**48",
+      operador: "Eduardo Silva"
+    },
+    finalizacao: [
+      "Cliente estava sem acesso ao ponto adicional. Em sistema constava que o ponto adicional estava offline; orientei o cliente a verificar o equipamento e o cabeamento.",
+      "Após as verificações, o cliente notou que o cabo de rede estava um pouco solto. Após a correção no conector, o acesso ao ponto adicional retornou.",
+      "Orientado a retornar o contato caso tenha alguma dúvida."
+    ],
+    dicas: [
+      "Ao receber transferência do comercial, apresente-se e confirme o motivo do contato antes de pedir os dados de novo.",
+      "Pergunte se a falta de acesso é no ponto principal, no adicional ou nos dois.",
+      "Confira em sistema o status de cada roteador e explique que o ponto adicional offline pode ser mau contato ou equipamento desligado.",
+      "Peça ao cliente que revise o equipamento e o cabo que liga os dois pontos, e confirme a volta da conexão com ele.",
+      "Para dúvidas de planos com TV, avise que o suporte não tem os detalhes e ofereça transferir ao setor comercial."
+    ]
   }
 ];
