@@ -168,7 +168,7 @@ const ATENDIMENTOS = [
       "Feita a manutenção. Conectado e navegando."
     ],
     dicas: [
-      "Avise o cliente que a ligação é gravada, por segurança, antes de iniciar a consulta.",
+      "Avise sempre para o cliente o número de protocolo, por segurança, antes de iniciar a consulta.",
       "Confira no sistema a causa da falta de acesso: aqui foi LOS, a perda de sinal de fibra.",
       "Verifique se há rompimento na região; sem rompimento, trate como problema isolado e abra a O.S. para o técnico.",
       "Informe o protocolo e o prazo da visita, e confirme o contato do cliente, mesmo que quem esteja no local seja outra pessoa."
@@ -177,7 +177,7 @@ const ATENDIMENTOS = [
   {
     titulo: "Mudança de cômodo – Remanejamento de fibra e cabeamento",
     categoria: "Mudança de cômodo",
-    operador: "Gu",
+    operador: "Gustavo Mistro",
     audio: "Mudança de comodo/gu - mudanca de com - censurado.mp3",
     abertura: {
       relato: "Atendimento aberto por outro operador. Cliente solicita mudança de cômodo e cabeamento.",
@@ -192,15 +192,14 @@ const ATENDIMENTOS = [
       "Se a ligação caiu, localize o atendimento anterior e retome de onde parou, sem fazer o cliente repetir tudo.",
       "Explique as opções comerciais com clareza: plano atual com roteador próprio ou upgrade com ponto adicional em cortesia.",
       "Informe o custo do cabeamento (R$ 3,00 por metro) e do remanejamento, e que o técnico avalia no local.",
-      "Antes de ofertar visita de avaliação, consulte o histórico de visitas anteriores.",
-      "Confirme data e horário do agendamento e a faixa de atendimento do técnico ao final."
-    ]
+      "Antes de ofertar visita de avaliação, consulte o histórico de visitas anteriores."    ]
   },
   {
     titulo: "Sem acesso ponto adicional – Cabo de rede solto",
     categoria: "Sem acesso ponto adicional",
     operador: "Eduardo Silva",
     audio: "Sem acesso ponto adicional/eduardo - sem acesso pont ad - censurado.mp3",
+    aviso: "Este atendimento passou primeiro por outro setor (comercial) e depois foi transferido para o suporte.",
     abertura: {
       relato: "Atendimento transferido por uma operadora do comercial para o suporte. Sem acesso.",
       telefone: "(11) 9****-**48",
@@ -212,11 +211,8 @@ const ATENDIMENTOS = [
       "Orientado a retornar o contato caso tenha alguma dúvida."
     ],
     dicas: [
-      "Ao receber transferência do comercial, apresente-se e confirme o motivo do contato antes de pedir os dados de novo.",
       "Pergunte se a falta de acesso é no ponto principal, no adicional ou nos dois.",
       "Confira em sistema o status de cada roteador e explique que o ponto adicional offline pode ser mau contato ou equipamento desligado.",
-      "Peça ao cliente que revise o equipamento e o cabo que liga os dois pontos, e confirme a volta da conexão com ele.",
-      "Para dúvidas de planos com TV, avise que o suporte não tem os detalhes e ofereça transferir ao setor comercial."
-    ]
+      "Peça ao cliente que revise o equipamento e o cabo que liga os dois pontos, e confirme a volta da conexão com ele."    ]
   }
 ];
