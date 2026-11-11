@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treinamento ATSOC – Atendimentos</title>
+<style>
+  :root{
+    --bg:#0f1720; --card:#17212d; --card2:#1d2a39; --line:#2a3a4d;
+    --txt:#e6edf5; --mut:#93a4b8; --acc:#2ea0ff; --ok:#3ecf8e; --warn:#ffb020;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 "Segoe UI",system-ui,sans-serif}
+  header{padding:28px 20px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#14202e,var(--bg))}
+  .wrap{max-width:1000px;margin:0 auto}
+  h1{margin:0;font-size:1.7rem}
+  h1 span{color:var(--acc)}
+  header p{margin:.3rem 0 0;color:var(--mut)}
+  main{padding:22px 20px 60px}
+  section{display:none}
+  section.on{display:block}
+  .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  input,select{background:var(--card);border:1px solid var(--line);color:var(--txt);padding:10px 12px;border-radius:8px;font:inherit}
+  input{flex:1;min-width:200px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:16px;overflow:hidden}
+  .card>summary{list-style:none;cursor:pointer;padding:16px 18px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+  .card>summary::-webkit-details-marker{display:none}
+  .card>summary h3{margin:0;font-size:1.05rem}
+  .tag{font-size:.75rem;background:var(--card2);color:var(--acc);padding:3px 10px;border-radius:99px;white-space:nowrap}
+  .meta{color:var(--mut);font-size:.85rem}
+  .body{padding:0 18px 18px;border-top:1px solid var(--line)}
+  audio{width:100%;margin:16px 0 6px}
+  .aviso{font-size:.82rem;color:var(--warn);margin:0 0 14px}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.cols{grid-template-columns:1fr}}
+  .box{background:var(--card2);border-radius:10px;padding:14px 16px}
+  .box h4{margin:0 0 8px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)}
+  .box.fin h4{color:var(--ok)}
+  .box dl{margin:0}
+  .box dt{color:var(--mut);font-size:.8rem;margin-top:8px}
+  .box dd{margin:0}
+  .box p{margin:0 0 10px}
+  .dicas-box{margin-top:14px}
+  .dicas-box h4{color:var(--warn)}
+  .dicas-box ul{margin:0;padding-left:20px}
+  .dicas-box li{margin-bottom:6px}
+  .vazio{color:var(--mut);text-align:center;padding:40px 0}
+  .sigilo{background:#2a2412;border:1px solid #5a4a14;color:#f3d98b;border-radius:10px;padding:12px 16px;margin-top:16px;font-size:.9rem}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1><span>ATSOC</span> · Material de Treinamento</h1>
+  <p>Ouça os atendimentos reais e compare com a abertura e a finalização registradas pelo operador.</p>
+  <div class="sigilo">🔒 Os dados sensíveis dos clientes (CPF, endereço, senhas e nomes completos) foram censurados e cortados dos áudios, e os telefones aparecem mascarados.</div>
+</div></header>
+
+<main><div class="wrap">
+  <section id="atend" class="on">
+    <div class="tools">
+      <input id="busca" type="search" placeholder="Buscar por título, operador ou relato…">
+      <select id="filtro"><option value="">Todas as categorias</option></select>
+    </div>
+    <div id="lista"></div>
+  </section>
+</div></main>
+
+<script src="dados.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+// Filtro de categorias
+[...new Set(ATENDIMENTOS.map(a => a.categoria))].forEach(c =>
+  $("#filtro").insertAdjacentHTML("beforeend", `<option>${esc(c)}</option>`));
+
+function render(){
+  const q = $("#busca").value.toLowerCase(), cat = $("#filtro").value;
+  const itens = ATENDIMENTOS.filter(a =>
+    (!cat || a.categoria === cat) &&
+    JSON.stringify(a).toLowerCase().includes(q));
+  $("#lista").innerHTML = itens.length ? itens.map(a => `
+    <details class="card">
+      <summary>
+        <div><h3>${esc(a.titulo)}</h3><div class="meta">Operador: ${esc(a.operador)}</div></div>
+        <span class="tag">${esc(a.categoria)}</span>
+      </summary>
+      <div class="body">
+        <audio controls preload="none" src="${encodeURI(a.audio)}"></audio>
+        <p class="aviso">Se o áudio não tocar, confira se o arquivo está na pasta indicada.</p>
+        <div class="cols">
+          <div class="box">
+            <h4>Abertura do atendimento</h4>
+            <dl>
+              <dt>Relato</dt><dd>${esc(a.abertura.relato)}</dd>
+              <dt>Telefone</dt><dd>${esc(a.abertura.telefone)}</dd>
+              <dt>Operador</dt><dd>${esc(a.abertura.operador)}</dd>
+            </dl>
+          </div>
+          <div class="box fin">
+            <h4>Finalização do atendimento</h4>
+            ${a.finalizacao.map(p => `<p>${esc(p)}</p>`).join("")}
+          </div>
+        </div>
+        ${a.dicas?.length ? `
+        <div class="box dicas-box"><h4>💡 Dicas deste atendimento</h4>
+          <ul>${a.dicas.map(d => `<li>${esc(d)}</li>`).join("")}</ul></div>` : ""}
+      </div>
+    </details>`).join("") : `<div class="vazio">Nenhum atendimento encontrado.</div>`;
+}
+$("#busca").oninput = render; $("#filtro").onchange = render; render();
+</script>
+</body>
+</html>
